@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.blueGradient {
+  background-image: linear-gradient(
+    to right,
+    #2c2e97 0%,
+    #4b55c4 51%,
+    #2c2e97 100%
+  );
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@layer components {
+  .spacing-x {
+    @apply px-6 sm:px-12 md:px-16 lg:px-20;
+  }
+}

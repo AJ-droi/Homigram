@@ -1,31 +1,33 @@
-import React from 'react'
-import { CiGlobe } from 'react-icons/ci'
-import { HiOutlineMail } from 'react-icons/hi'
-import { HiOutlineBellAlert } from 'react-icons/hi2'
-import { RxPerson } from 'react-icons/rx'
-
+import { NavLink } from "react-router-dom";
+import { navBarIcons, navBarLinks } from "../data/navBarData";
+import logo from "../assets/nav-logo.png";
 
 const Navbar = () => {
   return (
-    <div className='bg-[#2d2d2d] text-[#fff] flex justify-between'>
-        <ul className='flex items-center h-[10vh] justify-evenly w-[45%] ml-[22%] uppercase'>
-            <li><a href="">Home</a></li>
-            <li><a href="">Market</a></li>
-            <li><a href="">Compare</a></li>
-            <li><a href="">Blog</a></li>
-            <li><a href="">About</a></li>
-            <li><a href="">FAQ</a></li>
-            <button className='bg-[#383B98] py-[1%] px-[4%] rounded-md'>Add Property</button>
-        </ul>
-        <ul className='flex items-center h-[10vh] justify-evenly w-[20%] text-[1.3rem]'>
-            <li ><CiGlobe /></li>
-            <li><HiOutlineMail /></li>
-            <li><HiOutlineBellAlert /></li>
-            <li><RxPerson /></li>
+    <nav className="fixed top-0 left-0 right-0 z-[20] spacing-x bg-color-primary-dark text-color-white flex justify-between items-center">
+      <div className="w-[15%]">
+        <img className="h-12" src={logo} alt="logo" />
+      </div>
+      <ul className="hidden lg:flex items-center h-[10vh] w-[65%] gap-4 uppercase">
+        {navBarLinks.map((item) => (
+          <li key={item.title}>
+            <NavLink to={item.href}>{item.title}</NavLink>
+          </li>
+        ))}
 
-        </ul>
-    </div>
-  )
-}
+        <button className="blueGradient py-[1%] px-[4%] rounded-md">
+          Add Property
+        </button>
+      </ul>
+      <ul className="flex items-center gap-8 w-[20%] text-[1.3rem]">
+        {navBarIcons.map((item, index) => (
+          <li key={index}>
+            <item.Icon />
+          </li>
+        ))}
+      </ul>
+    </nav>
+  );
+};
 
-export default Navbar
+export default Navbar;

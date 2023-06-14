@@ -1,27 +1,48 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import Navbar from './components/Navbar'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import Home from './pages/Home/Home'
+// Libraries
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Outlet,
+} from "react-router-dom";
+// Components/Pages
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home/Home";
+import Footer from "./components/Footer/Footer";
+// ASsets
+import "./App.css";
 
 function App() {
-
   return (
     <>
-      <Navbar />
-    <Router>
-      <Routes>
-        <Route path='/' element={<Home />} />
+      {/* <Router>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
+        <Footer />
+      </Router> */}
 
-      </Routes>    
+      {/* Alternate Routing */}
+      <Router>
+        <Routes>
+          <Route path="/" element={<HomeLayout />}>
+            <Route path="" element={<Home />} />
+          </Route>
+        </Routes>
       </Router>
-    
-    
-
     </>
-  )
+  );
 }
 
-export default App
+export default App;
+
+function HomeLayout() {
+  return (
+    <div className="bg-color-primary-dark text-color-white">
+      <Navbar />
+      <Outlet />
+      <Footer />
+    </div>
+  );
+}
